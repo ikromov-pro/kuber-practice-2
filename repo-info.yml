@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  ENVIRONMENT: development
+  GRPC_PORT: "8080"
+  LOG_LEVEL: debug
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: repo-info
+  namespace: i-ikromov
