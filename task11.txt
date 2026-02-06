@@ -1,0 +1,1 @@
+kubectl create secret generic repo-secret -n i-ikromov --from-literal=DB_URL="postgres://admin:supersecret@10.10.10.1:5432/exam-db"

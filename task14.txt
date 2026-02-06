@@ -1,0 +1,2 @@
+ kubectl exec -it nginx1 -n i-ikromov -- curl repo1-svc
+{"message":"Welcome to your Kubernetes Exam!"}

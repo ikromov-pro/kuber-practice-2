@@ -1,0 +1,39 @@
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: practice-svc
+  namespace: i-ikromov
+spec:
+  selector:
+    app: flask-app-practice
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
+---
+# Deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: flask-app-practice
+  name: flask-app-practice
+  namespace: i-ikromov
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask-app-practice
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: flask-app-practice
+    spec:
+      containers:
+      - image: ikromovpro/docker-flaskapp:v1
+        name: flask-app-practice
+        resources: {}
+status: {}

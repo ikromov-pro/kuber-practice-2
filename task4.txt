@@ -1,0 +1,3 @@
+kubectl create deploy flask-app-practice --image=ikromovpro/docker-flaskapp:v1 -n i-ikromov
+kubectl exec -it nginx1 -n i-ikromov -- curl practice-svc/config
+{"author":"Ilhom","db_url":"postgres://admin:supersecret@10.10.10.1:5432/exam-db","environment":"dev","grpc_port":"8080","log_level":"debug","node":"HAVE NO IDEA","pod":"HAVE NO IDEA"}

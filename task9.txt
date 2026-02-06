@@ -1,0 +1,3 @@
+kubectl expose deployment frontend-app -n i-ikromov --port 80 --target-port 3000 --type NodePort
+kubectl exec -it nginx1 -n i-ikromov -- curl frontend-service/config
+{"log_level":"debug","grpc_port":"8080","environment":"dev","db_url":"postgres://admin:supersecret@10.10.10.1:5432/exam-db","pod_ip":"10.10.10.10"}

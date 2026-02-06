@@ -1,0 +1,42 @@
+#service
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: i-ikromov
+spec:
+  type: NodePort
+  selector:
+    app: frontend-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+---
+
+#deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: frontend-app
+  name: frontend-app
+  namespace: i-ikromov
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+      - image: ikromovpro/nodejs-app:v1
+        name: some1hing
+        resources: {}
+status: {}

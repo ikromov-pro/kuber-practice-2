@@ -1,0 +1,52 @@
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: repo1-svc
+  namespace: i-ikromov
+spec:
+  selector:
+    app: repo1-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+
+---
+# Deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: repo1-app
+  name: repo1-app
+  namespace: i-ikromov
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: repo1-app
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: repo1-app
+    spec:
+      containers:
+      - image: ikromovpro/repo-1:v1
+        name: repo1-app
+        envFrom:
+          - configMapRef:
+              name: repo-config
+          - secretRef:
+              name: repo-secret
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName  
+status: {}

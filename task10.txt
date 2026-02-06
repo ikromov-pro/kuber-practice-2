@@ -1,0 +1,1 @@
+ kubectl create cm repo-config -n i-ikromov  --from-literal env=development --from-literal grpc_port=8080 --from-literal  log_level=debug

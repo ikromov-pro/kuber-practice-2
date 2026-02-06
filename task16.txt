@@ -1,0 +1,3 @@
+kubectl get endpoints -n i-ikromov |  awk '{print $1}'
+NAME
+repo1-svc
